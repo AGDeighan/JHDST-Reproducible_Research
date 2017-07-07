@@ -1,0 +1,25 @@
+---
+title: "Reproducible Research Project 1"
+author: "Andrew Deighan"
+date: "July 7, 2017"
+output: html_document
+---
+```{r setoptions, echo=FALSE}
+library(knitr)
+opts_chunk$set(message = FALSE)
+```
+
+ First we will download and import the file
+
+```{r downloadimport, cache=TRUE}
+url = "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
+file = tempfile(pattern = "stepdata", fileext = ".zip")
+download.file(url, file, mode = "wb")
+unzip(file,exdir="data")
+unlink(file, recursive = TRUE)
+
+library(readr)
+
+stepdata <- read_csv("data/activity.csv")
+
+```
